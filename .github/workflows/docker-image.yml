@@ -16,17 +16,17 @@ jobs:
       uses: Azure/docker-login@v1
       with:
         # Container registry username
-        username: ${{ secrets._ACR_USERNAME }}
+        username: ${{ secrets._ACR_USERNAME1 }}
         # Container registry password
-        password: ${{ secrets._ACR_PASSWORD }}
+        password: ${{ secrets._ACR_PASSWORD1 }}
         # Container registry server url
-        login-server: ${{ secrets._ACR_LOGIN_SERVER }}
+        login-server: ${{ secrets._ACR_LOGIN_SERVER1 }}
         
     - uses: actions/checkout@v3
     - name: Build the Docker image
       run:         
-        docker build . --file WebApp.Dockerfile --tag  ${{ secrets._ACR_LOGIN_SERVER }}/sample-app-aoai-chatgpt:$(date +'%Y-%m-%d')_$GITHUB_RUN_NUMBER;
-        docker tag  ${{ secrets._ACR_LOGIN_SERVER }}/sample-app-aoai-chatgpt:$(date +'%Y-%m-%d')_$GITHUB_RUN_NUMBER  ${{ secrets._ACR_LOGIN_SERVER }}/sample-app-aoai-chatgpt:latest;
-        docker push  ${{ secrets._ACR_LOGIN_SERVER }}/sample-app-aoai-chatgpt:$(date +'%Y-%m-%d')_$GITHUB_RUN_NUMBER;
-        docker push  ${{ secrets._ACR_LOGIN_SERVER }}/sample-app-aoai-chatgpt:latest;
+        docker build . --file WebApp.Dockerfile --tag  ${{ secrets._ACR_LOGIN_SERVER1 }}/sample-app-aoai-chatgpt:$(date +'%Y-%m-%d')_$GITHUB_RUN_NUMBER;
+        docker tag  ${{ secrets._ACR_LOGIN_SERVER1 }}/sample-app-aoai-chatgpt:$(date +'%Y-%m-%d')_$GITHUB_RUN_NUMBER  ${{ secrets._ACR_LOGIN_SERVER1 }}/sample-app-aoai-chatgpt:latest;
+        docker push  ${{ secrets._ACR_LOGIN_SERVER1 }}/sample-app-aoai-chatgpt:$(date +'%Y-%m-%d')_$GITHUB_RUN_NUMBER;
+        docker push  ${{ secrets._ACR_LOGIN_SERVER1 }}/sample-app-aoai-chatgpt:latest;
       
